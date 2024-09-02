@@ -1,8 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 
 @Injectable()
-export class UsersService {
-  getUsers() {
-    return ['User1', 'User2', 'User3'];
+export class AppService {
+  constructor(
+    @Inject('learn_Value_Based_Providers') private readonly value: string,
+  ) {}
+
+  getHello(): string {
+    return `Injected value: ${this.value}`;
   }
 }
